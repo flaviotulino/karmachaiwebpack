@@ -9,31 +9,39 @@ module.exports = function (config) {
         // base path that will be used to resolve all patterns (eg. files, exclude)
         basePath: '',
 
-
         // frameworks to use
         // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
         frameworks: ['mocha', 'chai-as-promised', 'chai'],
 
         // list of files / patterns to load in the browser
         files: [
-            'tests.index.js'
+            'unit-test.config.js',
+            'app/**/*.js'
         ],
 
 
         // list of files to exclude
-        exclude: [],
+        exclude: [
+            'app/**/*spec.js'
+        ],
 
 
         // preprocess matching files before serving them to the browser
         // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
         preprocessors: {
             'node_modules/chai-as-promised/lib/chai-as-promised.js': ['webpack'],
-            'tests.index.js': ['webpack']
+            'unit-test.config.js': ['webpack'],
+            'app/**/*.js': ['webpack']
         },
 
         webpackMiddleware: {
             noInfo: isSingleRun,
             stats: 'errors-only'
+        },
+
+        webpack: {
+            // ...
+            devtool: 'inline-source-map'
         },
 
 
