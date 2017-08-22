@@ -6,11 +6,6 @@ module.exports = {
         publicPath: ''
     },
     module: {
-        rules: [
-            {
-                test: require.resolve('chai-as-promised')
-            }
-        ],
         loaders: [
             {
                 test: /\.jsx?/,

@@ -1,6 +1,8 @@
 // Karma configuration
 // Generated on Tue Aug 22 2017 10:02:47 GMT+0100 (BST)
 
+const isSingleRun = process.argv.includes('--single-run');
+
 module.exports = function (config) {
     config.set({
 
@@ -27,6 +29,11 @@ module.exports = function (config) {
         preprocessors: {
             'node_modules/chai-as-promised/lib/chai-as-promised.js': ['webpack'],
             'tests.index.js': ['webpack']
+        },
+
+        webpackMiddleware: {
+            noInfo: isSingleRun,
+            stats: 'errors-only'
         },
 
 
@@ -60,10 +67,10 @@ module.exports = function (config) {
 
         // Continuous Integration mode
         // if true, Karma captures browsers, runs the tests and exits
-        singleRun: false,
+        singleRun: isSingleRun,
 
         // Concurrency level
         // how many browser should be started simultaneous
         concurrency: Infinity
     })
-}
+};
