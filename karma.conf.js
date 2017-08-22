@@ -25,8 +25,10 @@ module.exports = function (config) {
         // preprocess matching files before serving them to the browser
         // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
         preprocessors: {
+            'node_modules/chai-as-promised/lib/chai-as-promised.js': ['webpack'],
             'tests.index.js': ['webpack']
         },
+
 
         // test results reporter to use
         // possible values: 'dots', 'progress'
@@ -64,4 +66,4 @@ module.exports = function (config) {
         // how many browser should be started simultaneous
         concurrency: Infinity
     })
-};
+}
