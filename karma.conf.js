@@ -30,7 +30,7 @@ module.exports = function (config) {
         // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
         preprocessors: {
             'node_modules/chai-as-promised/lib/chai-as-promised.js': ['webpack'],
-            'unit-test.config.js': ['webpack'],
+            'unit-test.config.js': ['webpack', 'sourcemap'],
             'app/**/*.js': ['webpack']
         },
 
