@@ -45012,7 +45012,7 @@ module.exports = "<div>\r\n    <h1>Title Login</h1>\r\n\r\n    <p>{{$ctrl.appNam
 class LoginController {
 
     constructor(){
-        this._appName = "Ciao";
+        this._appName = "Never gonna give u 'App'";
     }
 
     get appName() {

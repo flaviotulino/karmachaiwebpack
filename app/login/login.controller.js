@@ -1,7 +1,7 @@
 class LoginController {
 
     constructor(){
-        this._appName = "Ciao";
+        this._appName = "Never gonna give u 'App'";
     }
 
     get appName() {
