@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "build": "webpack",
     "test:dev": "karma start",
     "test": "karma start --single-run"
   },
@@ -12,11 +13,13 @@
   "license": "ISC",
   "dependencies": {
     "angular": "^1.6.6",
-    "angular-mocks": "^1.6.6"
+    "angular-mocks": "^1.6.6",
+    "angular-ui-router": "^1.0.3"
   },
   "devDependencies": {
     "chai": "^4.1.1",
     "chai-as-promised": "^7.1.1",
+    "html-loader": "^0.5.1",
     "karma": "^1.7.0",
     "karma-chai": "^0.1.0",
     "karma-chai-as-promised": "^0.1.2",
