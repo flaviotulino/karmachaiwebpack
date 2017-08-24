@@ -1,4 +1,4 @@
-export default function AppConfig ($stateProvider) {
+export default function ($stateProvider) {
     $stateProvider.state('app', {
         url: '/',
         component: 'appComponent'

@@ -1,4 +1,3 @@
-const LoginComponent = {
-    template: `<h1>test</h1>`
+export default {
+    template: `<h1>test</h1><login-button-component></login-button-component>`
 };
-export default LoginComponent;
