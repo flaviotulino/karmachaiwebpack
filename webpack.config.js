@@ -1,7 +1,7 @@
-const path = require ('path'); 
+const path = require('path');
 
 module.exports = {
-    entry: path.resolve(__dirname + '/app/index.js'),
+    entry: path.resolve(__dirname + '/app/app.module.js'),
     output: {
         path: path.resolve(__dirname + '/dist'),
         filename: 'bundle.js'
@@ -11,20 +11,20 @@ module.exports = {
             {
                 test: /\.js?/,
                 loaders: 'babel-loader',
-                include: path.resolve(__dirname + './app/index.js'),
+                include: path.resolve(__dirname + './app/app.module.js'),
                 options: {
                     babelrc: false,
                     presets: [
-                      'es2015'
+                        'es2015'
                     ]
-                  }
+                }
             },
             {
                 test: /\.scss$/,
                 loaders: [
-                    'style',
-                    'css',
-                    'sass'
+                    'style-loader',
+                    'css-loader',
+                    'sass-loader'
                 ]
             },
             { test: /\.html$/, loader: "html-loader" }
