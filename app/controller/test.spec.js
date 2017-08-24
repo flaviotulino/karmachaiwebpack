@@ -1,5 +1,3 @@
-import Test from "./test";
-
 describe('Test Component', () => {
     let $componentController;
     let $rootScope;
@@ -21,8 +19,6 @@ describe('Test Component', () => {
     describe('getSomething', () => {
         it('returns a value from the server', () => {
             const ctrl = $componentController('testComponent');
-
-            ctrl.getSomething().then(s => console.log(s));
 
             ctrl.getSomething = () => {
                 return Promise.resolve({data: {user: 'hello'}});
