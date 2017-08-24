@@ -15,8 +15,14 @@ Object.keys(configs).forEach(config => {
     moduleInstance.config(configs[config]);
 
     Object.keys(components).filter(c => c.includes(name)).forEach(comp => {
-        let componentName = comp.substr(comp.lastIndexOf('$') + 1, comp.length) + 'Component';
+
+        let name = comp.substr(comp.lastIndexOf('$') + 1, comp.length);
+        let componentName =  name + 'Component';
         let componentInstance = components[comp];
+
+        if (componentInstance.template === undefined && componentInstance.templateUrl === undefined) {
+            componentInstance.template = require('./components/' + comp.replace(/\$/gi,'/') + '.component.html');
+        }
 
         moduleInstance.component(componentName, componentInstance);
     });
