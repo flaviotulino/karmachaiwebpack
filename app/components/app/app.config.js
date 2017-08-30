@@ -1,6 +1,6 @@
-export default function ($stateProvider) {
+export default function appConfig ($stateProvider) {
     $stateProvider.state('app', {
-        url: '/',
-        component: 'appComponent'
+        url: '/'
     })
 };
+appConfig.$inject = ['$stateProvider'];

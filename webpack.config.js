@@ -16,7 +16,6 @@ module.exports = {
                 exclude: /node_modules/,
                 options: {
                     babelrc: false,
-                    plugins: ["import-glob"],
                     presets: [
                         'env', 'es2015'
                     ]
