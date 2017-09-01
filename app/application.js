@@ -26,8 +26,8 @@ class Application {
              * the file name will be the provider name.
              *
              * i.e app/providers/pxRouter/$state.provider.js will result in:
-             * module: pxRouter
-             * provider: $state
+             * module: 'pxRouter'
+             * provider: '$state'
              *
              * The instance in this case is the provider class itself (needs to be exported as default)
              */
