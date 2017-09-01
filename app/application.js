@@ -1,7 +1,7 @@
 import angular from 'angular';
 import Logger from './utils/logger';
 
-class Application {
+export default class Application {
     constructor () {
 
         // Contains the module names. They have to be unique, that's why this is a Set
@@ -122,9 +122,9 @@ class Application {
 
             let mod = null;
             try {
-                mod = angular.module(provider.module);
+                mod = angular.module(provider.module + '.module');
             } catch (e) {
-                mod = angular.module(provider.module, provider._instance.dependencies || []);
+                mod = angular.module(provider.module + '.module', provider._instance.dependencies || []);
             }
 
             const providerInstance = mod.provider(provider.provider, provider._instance);

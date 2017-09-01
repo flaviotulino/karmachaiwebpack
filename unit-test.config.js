@@ -4,7 +4,7 @@ chai.use(chaiAsPromised);
 
 // Overwrite the expect variable to use chai as promise
 expect = chai.expect;
-isDev = true;
+isDev = false;
 
 // Set the webpack context
 const testsContext = require.context('./app', true, /spec.js$/);
