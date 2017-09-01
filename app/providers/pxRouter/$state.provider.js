@@ -16,7 +16,4 @@ export default class PxStateProvider {
   }
 
 }
-PxStateProvider.$inject = ['$stateProvider'];
 PxStateProvider.dependencies = ['ui.router'];
-
-//export default angular.module('pxRouter',['ui.router']).provider('pxState', PxStateProvider);

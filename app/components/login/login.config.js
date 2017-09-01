@@ -1,8 +1,7 @@
-export default function loginConfig ($stateProvider) {
+export default function ($stateProvider) {
     $stateProvider.state('login', {
         parent: 'app',
         url: 'login',
         //component: 'loginComponent'
     })
 }
-loginConfig.$inject = ['$stateProvider'];

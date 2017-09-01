@@ -20,7 +20,8 @@ module.exports = function(env) {
                         babelrc: false,
                         presets: [
                             'env', 'es2015'
-                        ]
+                        ],
+                        plugins: ['angularjs-annotate']
                     }
                 },
                 {
@@ -41,7 +42,6 @@ module.exports = function(env) {
             new HtmlWebpackPlugin({
                 template: path.resolve(__dirname + '/app/index.html'),
             }),
-
         ]
     }
 };
