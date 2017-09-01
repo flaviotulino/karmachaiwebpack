@@ -1,8 +1,8 @@
-const path = require ('path');
+const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
 
-module.exports = function(env) {
+module.exports = function (env = {}) {
     return {
         entry: path.resolve(__dirname + '/app/application.js'),
         output: {
@@ -21,7 +21,9 @@ module.exports = function(env) {
                         presets: [
                             'env', 'es2015'
                         ],
-                        plugins: ['angularjs-annotate']
+                        plugins: [
+                            ['angularjs-annotate', {"explicitOnly": true}]
+                        ]
                     }
                 },
                 {
@@ -37,7 +39,7 @@ module.exports = function(env) {
         },
         plugins: [
             new webpack.DefinePlugin({
-                isDev: env.dev
+                isDev: env.dev || false
             }),
             new HtmlWebpackPlugin({
                 template: path.resolve(__dirname + '/app/index.html'),

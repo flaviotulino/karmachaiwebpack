@@ -6,7 +6,8 @@
   "scripts": {
     "test": "karma start",
     "unit-test": "karma start --single-run",
-    "start": "webpack-dev-server --progress --env.dev"
+    "start": "webpack-dev-server --progress --env.dev",
+    "dist": "webpack -p"
   },
   "keywords": [],
   "author": "",
