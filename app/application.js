@@ -2,66 +2,68 @@ import angular from 'angular';
 import Logger from './utils/logger';
 
 export default class Application {
-    constructor () {
+    constructor() {
 
         // Contains the module names. They have to be unique, that's why this is a Set
         this.modules = new Set();
     }
 
-    loadProviders () {
+    loadProviders() {
         /**
          * Import globally all the files under the providers/ folder
          * which end with provider.js "extension"
          */
         this.providers = require
-        .context('./providers', true, /provider.js$/)
-        .keys()
-        .map(p => {
-            // Remove the dots at the beginning (it is a relative path)
-            const normalized = p.replace(/^.\//, '');
+            .context('./providers', true, /provider.js$/)
+            .keys()
+            .map(p => {
+                // Remove the dots at the beginning (it is a relative path)
+                const normalized = p.replace(/^.\//, '');
 
-            /*
-             * Remove the provider.js extension
-             * After this removal, module will be the parent folder name and
-             * the file name will be the provider name.
-             *
-             * i.e app/providers/pxRouter/$state.provider.js will result in:
-             * module: 'pxRouter'
-             * provider: '$state'
-             *
-             * The instance in this case is the provider class itself (needs to be exported as default)
-             */
-            const [module, provider] = normalized.replace(/.provider.js$/, '').split('/', 2);
+                /*
+                 * Remove the provider.js extension
+                 * After this removal, module will be the parent folder name and
+                 * the file name will be the provider name.
+                 *
+                 * i.e app/providers/pxRouter/$state.provider.js will result in:
+                 * module: 'pxRouter'
+                 * provider: '$state'
+                 *
+                 * The instance in this case is the provider class itself (needs to be exported as default)
+                 */
+                const [module, provider] = normalized.replace(/.provider.js$/, '')
+                    .split('/', 2);
 
 
-            return {
-                module: module,
-                provider: provider,
-                _instance: require('./providers/' + normalized).default
-            }
-        });
+                return {
+                    module: module,
+                    provider: provider,
+                    _instance: require('./providers/' + normalized).default
+                }
+            });
     }
 
-    loadComponents () {
+    loadComponents() {
         // All the loading functions work the same. Please read loadProviders above
         this.components = require
-        .context('./components', true, /component.js/)
-        .keys()
-        .map(p => {
-            const normalized = p.replace(/^.\//, '');
-            const [module, component] = normalized.replace(/.component.js$/, '').split('/', 2);
+            .context('./components', true, /component.js/)
+            .keys()
+            .map(p => {
+                const normalized = p.replace(/^.\//, '');
+                const [module, component] = normalized.replace(/.component.js$/, '')
+                    .split('/', 2);
 
 
-            return {
-                module: module,
-                component: component,
-                _instance: require('./components/' + normalized).default
-            }
+                return {
+                    module: module,
+                    component: component,
+                    _instance: require('./components/' + normalized).default
+                }
 
-        });
+            });
     }
 
-    registerComponents () {
+    registerComponents() {
         this.components.forEach(component => {
 
             // For each component create a module (or get an existing one)
@@ -108,7 +110,8 @@ export default class Application {
              */
 
             if (component._instance.controller && component._instance.controllerAs === undefined) {
-                component._instance.controllerAs = component.component.charAt(0).toUpperCase() + component.component.slice(1);
+                component._instance.controllerAs = component.component.charAt(0)
+                    .toUpperCase() + component.component.slice(1);
             }
 
             // Register the component using the "Component" suffix
@@ -117,7 +120,7 @@ export default class Application {
         });
     }
 
-    registerProviders () {
+    registerProviders() {
         this.providers.forEach(provider => {
 
             let mod = null;
@@ -132,24 +135,25 @@ export default class Application {
         })
     }
 
-    loadConfigs () {
+    loadConfigs() {
         this.configs = require
-        .context('./components', true, /config.js/)
-        .keys()
-        .map(p => {
-            const normalized = p.replace(/^.\//, '');
-            const [module, config] = normalized.replace(/.config.js$/, '').split('/', 2);
+            .context('./components', true, /config.js/)
+            .keys()
+            .map(p => {
+                const normalized = p.replace(/^.\//, '');
+                const [module, config] = normalized.replace(/.config.js$/, '')
+                    .split('/', 2);
 
-            return {
-                module: module,
-                config: config,
-                _instance: require('./components/' + normalized).default
-            }
+                return {
+                    module: module,
+                    config: config,
+                    _instance: require('./components/' + normalized).default
+                }
 
-        });
+            });
     }
 
-    registerConfigs () {
+    registerConfigs() {
         this.configs.forEach(config => {
             let mod = null;
             try {
@@ -162,7 +166,7 @@ export default class Application {
         })
     }
 
-    start () {
+    start() {
         this.loadProviders();
         this.registerProviders();
 
