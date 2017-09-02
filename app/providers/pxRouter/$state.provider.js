@@ -3,6 +3,7 @@ export default class PxStateProvider {
     constructor ($stateProvider) {
         'ngInject';
         this.$stateProvider = $stateProvider;
+        console.log('im an error')
     }
 
     state (stateName, _state_) {
