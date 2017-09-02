@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "linter:fix": "eslint ./app/**/*.js --fix",
-    "linter": "eslint ./app/**/*.js",
+    "linter:fix": "eslint app --fix",
+    "linter": "eslint app",
     "test": "karma start",
     "test:single-run": "karma start --single-run",
     "start": "webpack-dev-server --progress --env.dev",
